@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"os"
+	"strings"
+)
 
 type word []string
 
@@ -21,4 +26,20 @@ func adding() word {
 		}
 	}
 	return data
+}
+
+func divide(w word, divide int) (word, word) {
+	return w[:divide], w[divide:]
+}
+
+func (w word) toString() string {
+	return strings.Join(w, ",")
+}
+
+func (w word) saveToFile(outputmain string, permission os.FileMode) error {
+	return ioutil.WriteFile(outputmain, []byte(w.toString()), permission)
+}
+
+func readFile(filename string) ([]byte, error) {
+	return ioutil.ReadFile(filename)
 }
