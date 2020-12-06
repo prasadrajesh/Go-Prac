@@ -2,15 +2,21 @@ package main
 
 import "fmt"
 
+type contact struct {
+	emailID string
+	phoneNo string
+}
+
 type person struct {
 	firstname string
 	lastname  string
+	contact   contact
 }
 
 func main() {
 	// simple go struct
-	person1 := person{"rajesh", "prasad"}
-	fmt.Println(person1)
+	// person1 := person{"rajesh", "prasad"}
+	// fmt.Println(person1)
 
 	// Another way to use struct
 	person2 := person{firstname: "Rajesh", lastname: "Prasad"}
@@ -24,4 +30,16 @@ func main() {
 	person3.firstname = "Raghav"
 	person3.lastname = "Pal"
 	fmt.Println("\n", person3)
+
+	//Embedding struct
+	person4 := person{
+		firstname: "Vicky",
+		lastname:  "Patel",
+		contact: contact{
+			emailID: "vickypatel@gmail.com",
+			phoneNo: "800000000",
+		},
+	}
+
+	fmt.Println(person4)
 }
