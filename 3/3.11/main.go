@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"os"
+)
 
 func main() {
 	data := adding()
@@ -11,7 +15,12 @@ func main() {
 	fmt.Println("Word type to single string - ", first.toString())
 	fmt.Println("Word type to byte - ", []byte(first.toString()))
 	second.saveToFile("outputmain1", 0644)
-	fmt.Println(readFile("outputmain1"))
+	by, err := from("outputmain11")
+	if err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
+	fmt.Println("data: ", by)
 }
 
 func slice() string {

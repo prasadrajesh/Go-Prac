@@ -28,6 +28,7 @@ func adding() word {
 	return data
 }
 
+/* split into two slice and return two values */
 func divide(w word, divide int) (word, word) {
 	return w[:divide], w[divide:]
 }
@@ -40,6 +41,7 @@ func (w word) saveToFile(outputmain string, permission os.FileMode) error {
 	return ioutil.WriteFile(outputmain, []byte(w.toString()), permission)
 }
 
-func readFile(filename string) ([]byte, error) {
-	return ioutil.ReadFile(filename)
+func from(filename string) ([]byte, error) {
+	bs, error := ioutil.ReadFile(filename)
+	return bs, error
 }
